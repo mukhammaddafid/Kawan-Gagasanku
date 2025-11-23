@@ -1,0 +1,205 @@
+/* Styling (CSS) - Futuristic Dark Theme */
+body { 
+    font-family: 'Inter', sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    margin: 0; 
+    padding: 20px; 
+    background-color: #121827; /* Futuristic Dark Background (Deep Blue/Grey) */
+    color: #E5E7EB;
+} 
+.container { 
+    width: 400%; 
+    max-width: 800px; 
+}
+h1 {
+    color: #00F0FF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* --- Chat Box Default (Mobile/Tablet) --- */
+.chat-box {
+    /* Tinggi default (100px sangat pendek, dinaikkan sedikit untuk default) */
+    height: 900px; 
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #374151;
+    background-color: #1F2937; /* Darker chat area */
+    border-radius: 15px; 
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); /* Subtle neon glow effect */
+}
+
+/* --- MEDIA QUERY UNTUK DESKTOP (Layar > 1024px) --- */
+
+@media (min-width: 1024px) {
+    .chat-box {
+        /* 1. Tinggi Chat Box Ditingkatkan untuk Desktop */
+        height: 650px; 
+        /* Padding sedikit diperbesar untuk ruang lebih */
+        padding: 20px; 
+        
+        /* Jika container di sekitar chat box melebar (misal: 800px), 
+           chat box ini akan mengisi lebar tersebut secara otomatis */
+    }
+}
+
+/* --- Catatan Penting --- */
+
+/* Agar tampilan desktop berfungsi optimal, pastikan kelas .container 
+   (wadah utama yang menampung chat-box) juga diatur max-width-nya 
+   menggunakan media query. Contoh:
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 900px; 
+    }
+}
+*/
+/* Markdown Styling within Chat Bubbles */
+.bot-bubble strong, .bot-bubble em {
+    color: #00FF8C; /* Neon Green for emphasis */
+}
+
+/* Message Structure */
+.message-wrapper {
+    max-width: 85%;
+    display: flex;
+    transition: opacity 0.3s;
+}
+.user-wrapper {
+    align-self: flex-end;
+    justify-content: flex-end; /* Align user message to the right */
+}
+.bot-wrapper {
+    align-self: flex-start;
+    align-items: flex-start; 
+    gap: 8px; /* Space between icon and bubble */
+}
+
+/* Bot Icon (Futuristic Bottle/Flask) */
+.bot-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 5px; /* Adjusting margin-top */
+}
+.flask-icon {
+    stroke: #00FF8C; /* Neon Green */
+    fill: none;
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 4px rgba(0, 255, 140, 0.8)); /* Neon glow effect */
+}
+
+/* Message Bubble */
+.message-bubble {
+    padding: 12px 18px; /* Slightly adjusted padding */
+    border-radius: 25px;
+    line-height: 1.5; /* Slightly reduced line height for cleaner look */
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    font-size: 15px; 
+}
+.user-bubble {
+    background-color: #374151; /* Dark grey for user */
+    color: #E5E7EB;
+    border-bottom-right-radius: 8px;
+    border: 1px solid #4B5563; 
+}
+.bot-bubble {
+    background-color: #2D3748; /* Slightly lighter bot bubble */
+    color: #E5E7EB;
+    border-bottom-left-radius: 8px;
+    border: 1px solid #4B5563;
+}
+
+/* Temporary (Loading) State - Creative/Elegant Animation */
+.temporary-message .bot-bubble {
+    background-color: #2D3748;
+    border: 1px dashed #00F0FF; /* Neon blue dashed border */
+    color: #00F0FF;
+    font-style: italic; /* Use italic for thinking state */
+    animation: futuristic-pulse 1.8s infinite ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5); /* Stronger neon glow */
+}
+.temporary-message .bot-icon .flask-icon {
+    stroke: #00F0FF; /* Icon flashes neon blue */
+    filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.8));
+}
+
+/* Input Form */
+#chat-form {
+    display: flex;
+    gap: 10px;
+}
+#user-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #4B5563;
+    background-color: #1F2937;
+    color: #E5E7EB;
+    border-radius: 10px; 
+    font-size: 16px;
+}
+#chat-form button {
+    padding: 12px 20px;
+    background-color: #00F0FF; /* Neon Blue/Cyan (Accent) */
+    color: #121827; /* Dark text on bright button */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+#chat-form button:hover:not(:disabled) {
+    background-color: #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
+    transform: translateY(-2px);
+}
+#chat-form button:disabled {
+    background-color: #4B5563;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.7; /* Reduced opacity for disabled state */
+}
+
+/* Keyframe for futuristic loading animation */
+@keyframes futuristic-pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.01); opacity: 1; border-color: #00FF8C; } 
+    100% { transform: scale(1); opacity: 0.9; }
+
+
+}
+
+/* style.css */
+
+/* Pengaturan Scrollbar Kustom untuk Webkit (Chrome, Safari) */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #00bcd4; /* Warna primary-cyan */
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Mengubah user bubble ke kanan menggunakan Tailwind: ml-auto di JS */
+
+/* Mengatur Poppins Font Stack */
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
